@@ -1,0 +1,63 @@
+#motel-scanner-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #1f2937;
+    cursor: pointer;
+    z-index: 10000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+#motel-scanner-widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+#motel-scanner-widget:active {
+    transform: translateY(2px);
+}
+
+#motel-scanner-widget.scanning {
+    pointer-events: none;
+    animation: pulse 1.5s infinite;
+    color: #4f46e5;
+}
+
+#motel-scanner-widget.success {
+    background: #10b981;
+    color: white;
+}
+
+#motel-scanner-widget.error {
+    background: #ef4444;
+    color: white;
+}
+
+.scanner-icon {
+    font-size: 20px;
+}
+
+.scanner-text {
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(79, 70, 229, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}

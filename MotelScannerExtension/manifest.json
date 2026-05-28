@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Motel ID Auto-Filler",
+  "version": "1.0",
+  "description": "One-click ID scanning and form filling.",
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.skytouchhos.com/pms/*"], 
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ]
+}
