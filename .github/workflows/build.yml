@@ -2,7 +2,12 @@ name: Build Windows EXE
 
 on:
   push:
-    branches: [ "main", "master" ]
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -25,8 +30,20 @@ jobs:
       run: |
         pyinstaller --onefile server.py
 
-    - name: Upload EXE
-      uses: actions/upload-artifact@v4
-      with:
-        name: Motel-ID-Scanner-EXE
-        path: dist/server.exe
+    - name: Upload EXE to Release
+      shell: pwsh
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        $tag = if ("${{ github.ref_type }}" -eq "tag") {
+          "${{ github.ref_name }}"
+        } else {
+          "manual-${{ github.run_number }}"
+        }
+
+        gh release view $tag 2>$null
+        if ($LASTEXITCODE -ne 0) {
+          gh release create $tag --title $tag --notes "Windows executable build."
+        }
+
+        gh release upload $tag dist/server.exe --clobber
