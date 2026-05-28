@@ -20,7 +20,7 @@ except ImportError:
 app = Flask(__name__)
 CORS(app)
 
-NAPS2_PROFILE = "nScan 690gt"
+NAPS2_PROFILE = "nScanId"
 NAPS2_PATH = r"C:\Program Files\NAPS2\naps2.console.exe"
 DEBUG_ENV_VAR = "MOTEL_SCANNER_DEBUG"
 

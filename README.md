@@ -15,7 +15,7 @@ Local scanner bridge and Chromium extension for filling guest ID fields from PDF
 
 - Windows for scanner capture and executable use.
 - NAPS2 installed at `C:\Program Files\NAPS2\naps2.console.exe`.
-- A NAPS2 scanner profile named `nScan 690gt`.
+- A NAPS2 scanner profile named `nScanId`.
 - Python 3.11 or newer for local development.
 
 ## Development
